@@ -1,0 +1,24 @@
+{
+  "name": "employee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kk <vv@vv.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.15.0",
+    "connect": "^3.7.0",
+    "cookie-session": "^2.0.0",
+    "cors": "2.7.1",
+    "ejs": "2.4.1",
+    "errorhandler": "1.4.3",
+    "express": "4.13.4"
+  },
+  "devDependencies": {
+    "newman": "^3.8.2",
+    "nodemon": "^1.11.0"
+  }
+}
