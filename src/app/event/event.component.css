@@ -1,0 +1,11 @@
+.center{
+    margin: 1%;
+    padding: 0%;
+    text-align: center;
+    border: 5px solid #d57aa5;
+}
+
+h2{
+    color: #04AA6D;
+    font-weight: bolder;
+}

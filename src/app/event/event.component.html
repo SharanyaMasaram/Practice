@@ -1,0 +1,41 @@
+<div class="center" >
+  <h2> Registation form </h2>
+  <p> All fields are mandatery </p>
+  <p>
+    <label for="eid">Name: </label>
+    <input #msg type="text"/>
+</p>
+    <br/>
+   Email: <input type="text"/> <br/>
+   Age: <input type="text"/> <br/>
+   <p> Are you Interested in studing </p>
+   yes: <input type="radio"/> 
+   No: <input type="radio"/> <br/>
+   <p> Your Education Qualification </p>
+   Option:<select>
+      <option value="Choose Qualification">Choose Qualification</option>      
+      <option>MBA</option>
+     <option>MCA</option>
+     <option>MCOM</option>
+     <option>MSC</option>
+ </select> <br/>
+ <p> How many years experiance </p>
+ <select>
+ <option value="select">select</option>
+ <option>1</option>
+ <option>2</option>
+ <option>3</option>
+ <option>4</option>
+ </select>
+ <p> Are you have alocholic </p>
+ yes:<input type="checkbox"/>
+ No:<input type="checkbox"/>
+ Only weak once:<input type="checkbox"/>
+ <p> Are you performed extra information </p>
+ <textarea rows="2" cols="30"></textarea> <br/>
+ <input type="submit" value="submit"/>
+ <input type="reset" value="cancel"/> <br/>
+ 
+   <button (click)="display(msg.value)">click me</button> <br/>
+   {{message}}
+ </div>
