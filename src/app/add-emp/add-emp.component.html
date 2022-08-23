@@ -1,0 +1,90 @@
+<form action="" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      required
+      aria-describedby="nameHelp"
+      placeholder="Enter Name"
+      formControlName="name"
+    />
+    <!-- <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <div
+      *ngIf="name!.invalid && (name!.dirty || name!.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="name!.errors?.['required']">Name is required.</div>
+      <div *ngIf="name!.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      type="text"
+      class="form-control"
+      id="city"
+      required
+      aria-describedby="cityHelp"
+      placeholder="Enter Name"
+      formControlName="city"
+    />
+    <!-- <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <div
+      *ngIf="city!.invalid && (city!.dirty || city!.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="city!.errors?.['required']">city is required.</div>
+      <div *ngIf="city!.errors?.['minlength']">
+        city must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="State">State</label>
+    <input
+      type="text"
+      class="form-control"
+      id="State"
+      required
+      aria-describedby="stateHelp"
+      placeholder="Enter State"
+      formControlName="state"
+    />
+    <!-- <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <div
+      *ngIf="state!.invalid && (state!.dirty || state!.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="state!.errors?.['required']">state is required.</div>
+      <div *ngIf="state!.errors?.['minlength']">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Submit</button>
+</form>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">state</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of empAr; let index = index;">
+        <th scope="row">{{index+1}}</th>
+        <td>{{emp.name}}</td>
+        <td>{{emp.city}}</td>
+        <td>{{emp.state}}</td>
+        <td><button type="button" class="btn btn-warning" (click)="updateEmp(emp)">Update</button>
+            <button type="button" class="btn btn-danger" (click)="deleteEmp(emp.id)">Delete</button> </td>
+      </tr>  
+    </tbody>
+  </table>

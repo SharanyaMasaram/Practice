@@ -1,0 +1,89 @@
+<div class="container" ng-app="winnieApp" ng-controller="winnieCtrl">
+    <div class="box">
+        <div class="col-md-12">
+            <div class="col-md-3 pull-right form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" placeholder="搜尋" ng-model="search">
+                <span class="fa fa-search form-control-feedback left" aria-hidden="true"></span>
+                <span class="fa fa-times-circle-o clearSearch" aria-hidden="true" ng-show="search" ng-click="search=''"></span>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-info" ng-click="undoInfo()"><span class="fa fa-undo" aria-hidden="true"></span> Undo</button>
+                <button type="button" class="btn btn-info" ng-click="redoInfo()"><span class="fa fa-repeat" aria-hidden="true"></span> Redo</button>
+                <button type="button" class="btn btn-info" ng-click="addInfo()"><span class="fa fa-plus" aria-hidden="true"></span> ADD</button>
+                <button type="button" class="btn btn-info" ng-click="deleteSelInfo()"><span class="fa fa-trash-o" aria-hidden="true"></span> Delete</button>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th><input type="checkbox" ng-model="checkAll"></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Phone</th>
+                <th>Created Time</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in information | filter:search">
+                    <td><input type="checkbox" ng-model="data.check" ng-checked="checkAll"></td>
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.gender}}</td>
+                    <td>{{data.birthday}}</td>
+                    <td>{{data.phone}}</td>
+                    <td>{{data.createdtime}}</td>
+                    <td>
+                        <span class="fa fa-edit" aria-hidden="true" ng-click="editInfo(data)"><br><small>Edit</small></span>
+                    </td>
+                    <td>
+                        <span class="fa fa-trash" aria-hidden="true" ng-click="deleteInfo(data)"><br><small>Delete</small></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-md-4 col-md-offset-4 listInfo" ng-show="listInfo">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">{{info.panelTitle||"Edit"}}</h3>
+                </div>
+                <div class="panel-body">
+                <form name="signForm" class="form-body" ng-submit="summitInfo()">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" placeholder="Name" required ng-model="info.name">
+                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="form-group inputSpan">
+                        <span class="fa fa-venus-mars" aria-hidden="true"></span>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" id="gender1" value="Male" required ng-model="info.gender"> Male
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" id="gender2" value="Female" required ng-model="info.gender"> Female
+                        </label>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" placeholder="Birthday" required ng-model="info.birthday">
+                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" placeholder="Phone" required ng-model="info.phone">
+                        <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <span class="spanID">ID: {{info.id}}</span>
+                    <!-- <div class="pull-right">
+                        <button type="button" class="btn btn-info">Summit</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div> -->
+
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success">Summit</button>
+                        <button type="button" class="btn btn-warning" ng-click="cancelInfo()">Cancel</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
