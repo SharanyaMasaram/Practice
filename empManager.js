@@ -1,14 +1,17 @@
 EmpManager = function(app) {
     var EmployeeProvider = require('./empProvider-array').EmployeeProvider;
     var empProvider = new EmployeeProvider();
+    
   
-    empProvider.insertEmp({_id:1, name:'Rocky', city:'Omaha', state:'NE'}, function(a,b){});
-    empProvider.insertEmp({_id:2, name:'Dave', city:'Stafford', state:'VA'}, function(a,b){});
+    empProvider.insertEmp({id:1, name:'Rocky', city:'Omaha', state:'NE'}, function(a,b){});
+    empProvider.insertEmp({id:2, name:'Dave', city:'Stafford', state:'VA'}, function(a,b){});
   
     app.get('/', function(req,res){
       console.log(" Hello worlld");
       res.send('Hello Testing')
     })
+
+
 
     app.get('/emp', function(req, res) {
       
@@ -40,7 +43,7 @@ EmpManager = function(app) {
   
     app.post('/emp/:id', function(req, res) {
       var _user = req.body;
-      _user._id = req.params.id;
+      _user.id = req.params.id;
   
       empProvider.updateEmp(_user, function(error, emp) {
         if (emp == null) {
