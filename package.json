@@ -15,7 +15,8 @@
     "cors": "2.7.1",
     "ejs": "2.4.1",
     "errorhandler": "1.4.3",
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "newman": "^3.8.2",
