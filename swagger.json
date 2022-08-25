@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Employee API",
+      "description": "<h3>Perform CURD operations on Employee service.Location- [Emp](http://localhost:3000)</h3>",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/emp": {
+        "get": {
+          "summary": "Returns a list of employees.",
+          "description": "Optional extended description in CommonMark or HTML.",
+          "responses": {
+            "200": {
+              "description": "A JSON array of emp details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Creates a emp.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created"
+            }
+          }
+        }
+      },
+      "/emp/{empId}": {
+        "get": {
+          "summary": "Returns a emp by ID.",
+          "parameters": [
+            {
+              "name": "empId",
+              "in": "path",
+              "required": true,
+              "description": "Parameter description in CommonMark or HTML.",
+              "schema": {
+                "type": "integer",
+                "format": "int64",
+                "minimum": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "delete": {
+          "summary": "deletes a emp by ID.",
+          "parameters": [
+            {
+              "name": "empId",
+              "in": "path",
+              "required": true,
+              "description": "Parameter description in CommonMark or HTML.",
+              "schema": {
+                "type": "integer",
+                "format": "int64",
+                "minimum": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    }
+  }

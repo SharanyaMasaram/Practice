@@ -1,6 +1,8 @@
 var express = require('express')
   , http = require('http')
   , path = require('path');
+  
+var cors = require('cors')
 
 var app = express();
 
@@ -10,6 +12,17 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
+
+app.use(cors());
+
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
 // app.use(express.json())
 // app.set('views', __dirname + '/views');
 // app.set('view engine', 'jade');
