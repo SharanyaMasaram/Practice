@@ -23,6 +23,15 @@ app.use(
   swaggerUi.serve, 
   swaggerUi.setup(swaggerDocument)
 );
+
+const db = require("./models");
+db.sequelize.sync()
+  .then(() => {
+    console.log("Synced db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
 // app.use(express.json())
 // app.set('views', __dirname + '/views');
 // app.set('view engine', 'jade');
@@ -39,9 +48,9 @@ app.use(
 //   app.use(express.errorHandler());
 // }
 
-var EmpManager = require('./empManager').EmpManager;
-var empManagerService = new EmpManager(app);
-
+// var EmpManager = require('./empManager').EmpManager;
+// var empManagerService = new EmpManager(app);
+require("./routes/emp.routes")(app);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
